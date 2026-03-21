@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Благодарность NORD DIVISION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые стили */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0c0c0c; /* Очень глубокий черный */
+            /* Легкая точечная текстура на фоне */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="1" height="1" x="0" y="0" fill="rgba(255,255,255,0.02)"/></svg>');
+            color: #ffffff;
+            font-family: 'Verdana', sans-serif; /* Для основного текста */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Чтобы футер всегда был внизу */
+            line-height: 1.6;
+        }
+
+        /* Шапка с логотипами */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 5%; /* Отступы в % для адаптивности */
+        }
+
+        .logo-container {
+            width: 150px; /* Базовый размер лого на десктопе */
+            transition: width 0.3s ease;
+        }
+
+        /* Настройки для самих картинок лого */
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1; /* Растягивается и прижимает футер */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px 5%; /* Отступы по бокам */
+        }
+
+        /* Массивный, грозный заголовок (font-size в vw для адаптивности) */
+        .main-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 8vw; /* Размер шрифта зависит от ширины экрана */
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            /* Глубокая тень для массивности */
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9), 
+                         0px 0px 30px rgba(255, 255, 255, 0.1); 
+        }
+
+        /* Текст благодарности */
+        .thank-you-text {
+            font-size: 24px;
+            margin-bottom: 50px;
+            max-width: 800px;
+            color: #d1d1d1;
+            font-weight: normal;
+        }
+
+        /* Блок для видео */
+        .video-section {
+            width: 100%;
+            max-width: 900px; /* Максимальная ширина видео */
+            margin: 0 auto 50px auto;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background-color: #000;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            /* Современный способ сделать видео адаптивным (пропорции 16:9) */
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Настройки для iframe внутри видеоблока */
+        .video-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Футер */
+        footer {
+            padding: 30px 5%;
+            text-align: center;
+            background-color: #0a0a0a;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-text {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888888;
+        }
+
+        /* --- Адаптация для мобильных устройств (< 768px) --- */
+        @media (max-width: 768px) {
+            /* Перестраиваем шапку: логотипы по центру */
+            header {
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+                padding: 30px 5%;
+            }
+
+            .logo-container {
+                width: 100px; /* Лого становятся меньше */
+            }
+
+            /* Уменьшаем шрифт заголовка */
+            .main-title {
+                font-size: 14vw; 
+                letter-spacing: -1px;
+                margin-bottom: 15px;
+            }
+
+            /* Уменьшаем текст благодарности */
+            .thank-you-text {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            /* Отступы у видео секции */
+            .video-section {
+                margin-bottom: 30px;
+            }
+
+            /* Уменьшаем футер */
+            footer {
+                padding: 20px 5%;
+            }
+            .footer-text {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo-left.png" alt="Левый логотип">
+        </div>
+        <div class="logo-container">
+            <img src="logo-right.png" alt="Правый логотип">
+        </div>
+    </header>
+    
+    <main>
+        <h1 class="main-title">NORD DIVISION</h1>
+        
+        <p class="thank-you-text">Наш сайт благодарит Nord Division за все, что они делают для народа России.</p>
+        
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/TXHGR_wKZMY?si=27DOfCB0kotVbqBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-text"> ПІВНІЧНА ДИВІЗІЯ | SO:U TEAM | UKRAINIAN HACKER | MARIO </p>
+    </footer>
+</body>
+</html>
