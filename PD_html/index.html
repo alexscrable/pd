@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Північна Дивізія — молодіжна організація. Молодь. Дія. Братерство.">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Північна Дивізія">
+  <meta property="og:description" content="Молодь · Дія · Братерство">
+  <meta property="og:type" content="website">
+
+  <title>Північна Дивізія</title>
+
+  <!-- Preconnect to font origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets — order matters: base → nav → sections → footer -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <!-- GSAP (defer: loads after parse, before DOMContentLoaded) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- App JS — loaded last so GSAP is available -->
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+
+  <!-- Sentinel for navbar IntersectionObserver -->
+  <div id="nav-sentinel" aria-hidden="true" style="position:absolute;top:60px;height:1px;width:1px;pointer-events:none;"></div>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Головна навігація">
+
+      <!-- Logo — повертає на головну -->
+      <a href="#" class="navbar__logo" aria-label="Північна Дивізія — на головну">
+        <div class="navbar__logo-icon" aria-hidden="true">
+          <!-- Shield / Emblem SVG -->
+          <img src="images/PDlogo.svg" alt="Лого" style="height:60px;">
+        </div>
+        <div class="navbar__logo-text">
+          <span class="navbar__logo-name">Північна Дивізія</span>
+        </div>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="navbar__links" role="list">
+        <li><a href="#manifesto" class="navbar__link">Про нас</a></li>
+        <li><a href="#ecosystem" class="navbar__link">Екосистема</a></li>
+        <li><a href="#media"     class="navbar__link">Медіа</a></li>
+        <li><a href="#gallery"   class="navbar__link">Галерея</a></li>
+        <li><a href="#join"      class="navbar__link">Долучитися</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a href="#join" class="navbar__cta">Долучитись</a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger"
+              aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu overlay -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню">
+      <nav>
+        <a href="#manifesto" class="mobile-menu__link">Про нас</a>
+        <a href="#ecosystem" class="mobile-menu__link">Екосистема</a>
+        <a href="#media"     class="mobile-menu__link">Медіа</a>
+        <a href="#gallery"   class="mobile-menu__link">Галерея</a>
+        <a href="#join"      class="mobile-menu__link">Долучитися</a>
+      </nav>
+      <p class="mobile-menu__footer">Молодь · Дія · Братерство</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="Головний банер">
+        <div class="hero__bg" aria-hidden="true">
+              <img src="images/1.jpg" alt="" class="hero__bg-img">
+          </div>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Молодіжна організація · Заснована 2025</p>
+
+        <h1 class="hero__title" aria-label="Північна Дивізія">
+          <span class="hero__title-line">Північна</span>
+          <span class="hero__title-line">Дивізія</span>
+        </h1>
+
+        <p class="hero__subtitle">Молодь · Дія · Братерство</p>
+
+        <div class="hero__divider" aria-hidden="true">
+          <span>Приєднуйся до руху</span>
+        </div>
+
+        <div class="hero__actions">
+          <a href="#join"      class="btn btn--primary btn--lg">Долучитися</a>
+          <a href="#manifesto" class="btn btn--outline btn--lg">Дізнатися більше</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-text">Скрол</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MANIFESTO / ABOUT
+         ═══════════════════════════════════════════════════════ -->
+    <section class="manifesto section" id="manifesto">
+      <div class="manifesto__watermark" aria-hidden="true">ДИВІЗІЯ</div>
+      <div class="container">
+        <div class="manifesto__grid">
+
+          <!-- Quote side -->
+          <div class="reveal">
+            <p class="label">Наш Маніфест</p>
+            <blockquote class="manifesto__quote">
+              Ми — <em>не просто</em><br>
+              організація.<br>
+              Ми — <em>екосистема</em><br>
+              майбутнього.
+            </blockquote>
+            <p class="manifesto__body">
+              Заснована у 2025 році, «Північна Дивізія» об'єднує молодь, яка готова діяти — а не чекати. Ми не говоримо про зміни, ми їх робимо: через осередки в містах, спільні ініціативи та щоденну роботу з людьми.
+            </p>
+            <p class="manifesto__body">
+              Нас уже п'ять міст. І це тільки початок.
+            </p>
+          </div>
+
+          <!-- Values side -->
+          <div class="manifesto__values reveal">
+            <article class="value">
+              <span class="value__num">01</span>
+              <div>
+                <h3 class="value__name">Молодь</h3>
+                <p class="value__desc">Ми — для покоління, яке хоче змінювати країну. Молодість — це не вік, це стан духу і готовність діяти.</p>
+              </div>
+            </article>
+            <article class="value">
+              <span class="value__num">02</span>
+              <div>
+                <h3 class="value__name">Дія</h3>
+                <p class="value__desc">Ми не говоримо — ми робимо. Вишколи, ініціативи, волонтерство і реальна присутність там, де потрібна допомога.</p>
+              </div>
+            </article>
+            <article class="value">
+              <span class="value__num">03</span>
+              <div>
+                <h3 class="value__name">Братерство</h3>
+                <p class="value__desc">Спільнота, яка тримає спину. Осередки в містах, єдність у цінностях, підтримка в кожній ситуації.</p>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         STATS
+         ═══════════════════════════════════════════════════════ -->
+    <section class="stats section--sm" id="stats" aria-label="Статистика організації">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stat reveal">
+            <div class="stat__number" data-counter="200" data-suffix="+">0</div>
+            <p class="stat__label">Активних учасників</p>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__number" data-counter="1" data-suffix="">0</div>
+            <p class="stat__label">Рік активності</p>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__number" data-counter="5" data-suffix="">0</div>
+            <p class="stat__label">Міст присутності</p>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__number" data-counter="50" data-suffix="+">0</div>
+            <p class="stat__label">Проведених заходів</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         ECOSYSTEM
+         ═══════════════════════════════════════════════════════ -->
+    <section class="ecosystem section" id="ecosystem">
+      <div class="container">
+        <div class="ecosystem__header reveal">
+          <div>
+            <p class="label">Наша Екосистема</p>
+            <h2 class="section-title">Більше,<br>ніж рух</h2>
+          </div>
+          <div class="ecosystem__intro-block">
+            <p class="ecosystem__intro">
+              «Північна Дивізія» — молодіжна організація, але ми є частиною великої екосистеми. Поруч із нами — тату-студія, музичний лейбл та барбершоп, що поділяють наш дух і цінності.
+            </p>
+            <p class="ecosystem__intro">
+              Кожен з напрямків існує самостійно, але об'єднаний спільною ідеєю: будувати середовище для тих, хто хоче більшого. Ми — молодіжне ядро цієї екосистеми.
+            </p>
+          </div>
+        </div>
+
+        <div class="ecosystem__cards">
+
+          <!-- Barbershop -->
+          <article class="eco-card eco-card--org reveal">
+            <div class="eco-card__bg" aria-hidden="true"></div>
+            <span class="eco-card__num" aria-hidden="true">01</span>
+            <div class="eco-card__body">
+              <p class="eco-card__tag">Барбершоп</p>
+              <h3 class="eco-card__title">Nord<br>Barbershop</h3>
+              <p class="eco-card__desc">Місце для своїх. Стрижки, атмосфера і спільнота — тут зустрічаються ті, хто поділяє наші цінності.</p>
+              <a href="#" class="eco-card__link">Детальніше <span class="eco-card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <!-- Tattoo Studio -->
+          <article class="eco-card eco-card--tattoo reveal">
+            <div class="eco-card__bg" aria-hidden="true"></div>
+            <span class="eco-card__num" aria-hidden="true">02</span>
+            <div class="eco-card__body">
+              <p class="eco-card__tag">Тату-студія</p>
+              <h3 class="eco-card__title">Nord<br>Tattoo</h3>
+              <p class="eco-card__desc">Тату як знак приналежності та пам'яті. Авторські роботи у стилі dark-realism і traditional.</p>
+              <a href="#" class="eco-card__link">Портфоліо <span class="eco-card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <!-- Music Label -->
+          <article class="eco-card eco-card--label reveal">
+            <div class="eco-card__bg" aria-hidden="true"></div>
+            <span class="eco-card__num" aria-hidden="true">03</span>
+            <div class="eco-card__body">
+              <p class="eco-card__tag">Музичний лейбл</p>
+              <h3 class="eco-card__title">Nord<br>Music</h3>
+              <p class="eco-card__desc">Андеграундна музика, що резонує з ідеологією руху. Від людей, які живуть цим.</p>
+              <a href="#" class="eco-card__link">Слухати <span class="eco-card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MEDIA / NEWS
+         ═══════════════════════════════════════════════════════ -->
+    <section class="media section" id="media">
+      <div class="container">
+        <div class="media__header reveal">
+          <div>
+            <p class="label">Медіа та Новини</p>
+            <h2 class="section-title">Останні<br>події</h2>
+          </div>
+          <a href="#" class="view-all">Всі публікації →</a>
+        </div>
+
+        <div class="news-grid reveal">
+
+          <!-- Featured card -->
+          <article class="news-card news-card--featured">
+            <div class="news-card__thumb-wrap">
+              <img class="news-card__thumb"
+                   src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=900&q=80&fit=crop"
+                   alt="Відкриття осередку в Миколаєві"
+                   loading="lazy">
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span class="news-card__tag">Осередок</span>
+                <time class="news-card__date" datetime="2026-04-20">20 Квітня 2026</time>
+              </div>
+              <h3 class="news-card__title">Відкриття осередку в Миколаєві</h3>
+              <p class="news-card__excerpt">«Північна Дивізія» продовжує розширюватись — новий осередок відкрито в Миколаєві. Тепер нас п'ятеро: зустрічаємо нових братів на півдні країни.</p>
+            </div>
+          </article>
+
+          <!-- Side card 1 -->
+          <article class="news-card">
+            <div class="news-card__thumb-wrap">
+              <img class="news-card__thumb"
+                   src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=80&fit=crop"
+                   alt="Київський осередок у центрі адопції тварин"
+                   loading="lazy">
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span class="news-card__tag">Волонтерство</span>
+                <time class="news-card__date" datetime="2026-04-05">5 Квітня 2026</time>
+              </div>
+              <h3 class="news-card__title">Київський осередок відвідав центр адопції тварин</h3>
+              <p class="news-card__excerpt">Хлопці з Києва провели час із підопічними центру — допомогли, поспілкувались і нагадали, що дія може бути доброю.</p>
+            </div>
+          </article>
+
+          <!-- Side card 2 -->
+          <article class="news-card">
+            <div class="news-card__thumb-wrap">
+              <img class="news-card__thumb"
+                   src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80&fit=crop"
+                   alt="Nord Records — трек Лабуда"
+                   loading="lazy">
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span class="news-card__tag">Музика</span>
+                <time class="news-card__date" datetime="2026-03-20">20 Березня 2026</time>
+              </div>
+              <h3 class="news-card__title">Nord Records: вийшов новий трек «Лабуда»</h3>
+              <p class="news-card__excerpt">Свіжий реліз від нашого лейблу вже доступний на всіх стрімінгових платформах. Слухай — і розповідай своїм.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         GALLERY
+         ═══════════════════════════════════════════════════════ -->
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <div class="gallery__header reveal">
+          <p class="label">Фотогалерея</p>
+          <h2 class="section-title">Наші моменти</h2>
+        </div>
+      </div>
+      <div style="padding-inline: var(--container-pad);">
+        <div class="gallery__grid" role="list" aria-label="Галерея фотографій">
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="images/1.jpg"
+                 alt="Вишкіл учасників організації" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&q=80&fit=crop"
+                 alt="Командна робота" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&q=80&fit=crop"
+                 alt="Захід організації" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&q=80&fit=crop"
+                 alt="Братерство та єдність" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fit=crop"
+                 alt="Молодь у дії" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&fit=crop"
+                 alt="Культура руху" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+          <figure class="gallery__item" role="listitem">
+            <img class="gallery__img"
+                 src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80&fit=crop"
+                 alt="Nord Tattoo Studio" loading="lazy">
+            <div class="gallery__overlay" aria-hidden="true">
+              <span class="gallery__overlay-label">Переглянути</span>
+            </div>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         JOIN / CTA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="join section" id="join">
+      <div class="join__watermark" aria-hidden="true">2026</div>
+      <div class="container">
+        <div class="join__inner">
+
+          <p class="join__label">Стати частиною руху</p>
+          <h2 class="join__title reveal">Приєднуйся<br>до нас</h2>
+          <p class="join__sub reveal">
+            Ми шукаємо тих, хто готовий діяти — не просто говорити. Якщо ти молодий, відданий і хочеш змінювати країну — твоє місце тут.
+          </p>
+          <div class="join__actions reveal">
+            <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
+               class="btn btn--primary btn--lg">Заповнити анкету</a>
+            <a href="#partners" class="btn btn--outline btn--lg">Стати партнером</a>
+          </div>
+
+          <!-- Partners hub -->
+          <div class="partners" id="partners">
+            <p class="label" style="justify-content:center;">Партнерство</p>
+            <h3 class="partners__title reveal">Допоможи нам будувати</h3>
+            <p class="join__sub reveal" style="max-width:540px; margin: 0 auto 2.5rem;">
+              Хочеш підтримати організацію — фінансово, ресурсами чи медійно? Заповни коротку форму і ми зв'яжемося з тобою.
+            </p>
+            <div class="join__actions reveal">
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
+                 class="btn btn--primary btn--lg">Стати партнером →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <p class="footer__slogan">Молодь • Дія • Братерство</p>
+
+      <div class="footer__grid">
+
+        <div class="footer__col">
+          <p class="footer__col-title">Контакти</p>
+          <p>Email: <a href="mailto:info@pivnichnadiviziya.ua">info@pivnichnadiviziya.ua</a></p>
+          <p>Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Соціальні мережі</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 5L2 12.5l7 1M21 5l-4.5 16L9.5 13.5M21 5L9.5 13.5m0 0v5l3-3"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="5" width="20" height="14" rx="3"/>
+                <path d="M10 9l6 3-6 3V9z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Екосистема</p>
+          <ul>
+            <li><a href="#">Nord Barbershop</a></li>
+            <li><a href="#">Nord Tattoo Studio</a></li>
+            <li><a href="#">Nord Records</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Північна Дивізія. Всі права захищено.</p>
+        <p class="footer__glory">Слава Україні</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
